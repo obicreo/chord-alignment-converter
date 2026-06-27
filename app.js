@@ -32,9 +32,27 @@ function scheduleConvert(delay = 60) {
   convertTimer = window.setTimeout(convert, delay);
 }
 
-function applySettingsAndConvert() {
+async function applySettingsAndConvert() {
   applySettings();
-  scheduleConvert(0);
+
+  const selectedFont = fontSelect.value;
+  const selectedSize = Number(sourceSize.value) || 18;
+
+  if (document.fonts?.load) {
+    try {
+      await document.fonts.load(`${selectedSize}px "${selectedFont}"`);
+      await document.fonts.ready;
+    } catch {
+      // Font cihazda yoksa tarayıcının yedek fontuyla devam eder.
+    }
+  }
+
+  window.requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
+      window.clearTimeout(convertTimer);
+      convert();
+    });
+  });
 }
 
 function getPlainText() {
