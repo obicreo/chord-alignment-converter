@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="Convert proportional-font chord sheets into aligned monospace text."
+  >
+  <title>Chord Alignment Converter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="page-header">
+      <h1>Chord Alignment Converter</h1>
+      <p class="intro">
+        Preserves the original line structure and maps chord positions to the
+        most suitable character columns in the lyric line below.
+      </p>
+    </header>
+
+    <section class="toolbar" aria-label="Converter settings">
+      <label>
+        Source font
+        <select id="font">
+          <option value="Arial">Arial</option>
+          <option value="Segoe UI">Segoe UI</option>
+          <option value="Roboto">Roboto</option>
+          <option value="Open Sans">Open Sans</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times New Roman</option>
+        </select>
+      </label>
+
+      <label>
+        Source size
+        <input id="sourceSize" type="number" min="8" max="72" value="18">
+      </label>
+
+      <label>
+        Output size
+        <input id="outputSize" type="number" min="8" max="40" value="16">
+      </label>
+
+      <label>
+        Mapping
+        <select id="mapping">
+          <option value="nearest">Nearest character</option>
+          <option value="before">Previous character</option>
+          <option value="after">Next character</option>
+        </select>
+      </label>
+
+      <button id="clear" type="button">Clear</button>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <div class="card-header">
+          <strong>Source content</strong>
+          <span class="hint">Updates automatically while you type</span>
+        </div>
+
+        <textarea
+          id="source"
+          spellcheck="false"
+          wrap="off"
+          aria-label="Source chord and lyric content"
+          placeholder="Paste chord and lyric content here..."
+        ></textarea>
+      </article>
+
+      <article class="card">
+        <div class="card-header">
+          <strong>Monospace output</strong>
+
+          <div class="output-actions">
+            <button id="copy" type="button">Copy</button>
+            <button id="download" type="button">Download TXT</button>
+          </div>
+        </div>
+
+        <textarea
+          id="output"
+          readonly
+          spellcheck="false"
+          wrap="off"
+          aria-label="Converted monospace output"
+        ></textarea>
+      </article>
+    </section>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
