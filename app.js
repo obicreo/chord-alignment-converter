@@ -43,7 +43,7 @@ async function applySettingsAndConvert() {
       await document.fonts.load(`${selectedSize}px "${selectedFont}"`);
       await document.fonts.ready;
     } catch {
-      // Font cihazda yoksa tarayıcının yedek fontuyla devam eder.
+      
     }
   }
 
