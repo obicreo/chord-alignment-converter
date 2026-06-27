@@ -173,15 +173,44 @@ textarea {
   font-size: 16px;
 }
 
-.status {
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
   min-height: 22px;
   margin-top: 11px;
+}
+
+.status {
+  min-height: 0;
+  margin-top: 0;
   color: var(--muted);
   font-size: 13px;
 }
 
+.repo-link {
+  flex-shrink: 0;
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.repo-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
 .status.error {
   color: var(--error);
+}
+
+@media (max-width: 600px) {
+  .status-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
 }
 
 @media (max-width: 900px) {

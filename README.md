@@ -3,6 +3,10 @@
 A lightweight browser-based tool that converts chord sheets written with a
 proportional font into aligned monospace text.
 
+## Live Demo
+
+https://obicreo.github.io/chord-alignment-converter/
+
 ## Features
 
 - Live conversion while typing or pasting
